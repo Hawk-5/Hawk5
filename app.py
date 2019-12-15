@@ -10,6 +10,9 @@ import cv2
 import imutils
 import time
 import copy
+import shark2Algorithm
+
+shark2Algorithm.generate_templates()
 
 def image_resize(image, width = None, height = None, inter = cv2.INTER_AREA):
     # initialize the dimensions of the image to be resized and
@@ -151,6 +154,11 @@ args = vars(ap.parse_args())
 # list of tracked points
 greenLower = (29, 86, 6)
 greenUpper = (64, 255, 255)
+# red
+# greenLower = (1, 190, 200)
+# greenUpper = (18, 255, 255)
+# greenLower = (5, 50, 50)
+# greenUpper = (15, 255, 255)
 pts = deque(maxlen=args["buffer"])
 
 # if a video path was not supplied, grab the reference
@@ -270,7 +278,7 @@ while True:
             print ("The gesture is")
             print (track_gesture_x)
             print (track_gesture_y)
-            word = find_prediced_word(track_gesture_x, track_gesture_y)
+            word = shark2Algorithm.predict_word(track_gesture_x, track_gesture_y)
             predicted_word_flag = True
             startTimer =  time.time()
         track_gesture_x = []

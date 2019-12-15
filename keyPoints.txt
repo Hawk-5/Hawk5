@@ -1,0 +1,78 @@
+A Qwerty Keyboard is displayed on the camera feed
+
+An object has 2 surfaces - A marked fluorescent green colored surface to indicate start / trace and an unmarked surface of any other color
+
+Identify if the marked fluorescent green colored surface is present on the Qwerty Keyboard, this triggers the start of the gesture
+
+Once the marked fluorescent green colored surface is no longer visible, we conclude the gesture has come to an end
+
+The co-ordinate points of the gesture are fed into the Shark2 Algorithm
+
+The top 5 suggested words are displayed 
+
+Identify the color of a particular object which is the pointer in our case
+We find the region of an object having a specific color
+Obtain the contour region of this object
+Find the center of the colored region of this object
+This approach is better than tracking as 
+
+Now track this pointer as the gesture is being typed 
+This can be done by keeping track of detected color point of previous frames in a queue.
+This queue can be used to depict the gesture trail
+
+Finding Stop and Start of the Gesture
+When the contour is no more available. Ie the user hides the colored object, the gesture stops
+The trace of the Gesture path is noted
+
+Predicting the required word
+The dictionary of words for the Shark2 algorithm are trained using the centroid points for each letter to obtain our template for gestures for each word.
+The gesture trace of the user input is fed into the Shark2 Algorithm to predict the most suitable word
+
+
+
+MANOVA
+
+                    Df  Pillai approx F num Df den Df   Pr(>F)    
+as.factor(distance)  1 0.85264   26.037      2      9 0.000181 ***
+Residuals           10                                            
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+ Response time :
+                    Df Sum Sq Mean Sq F value   Pr(>F)   
+as.factor(distance)  1 420.08  420.08  16.792 0.002152 **
+Residuals           10 250.17   25.02                    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+ Response error :
+                    Df Sum Sq Mean Sq F value   Pr(>F)   
+as.factor(distance)  1   1875    1875  19.737 0.001249 **
+Residuals           10    950      95                    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Paired T-Test
+
+Time : 
+
+data:  closeRange and farRange
+t = -9.6798, df = 5, p-value = 9.989e-05
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+      -Inf -9.369988
+sample estimates:
+mean of the differences 
+              -11.83333 
+
+Error : 
+
+data:  closeRange and farRange
+t = 4.0379, df = 5, p-value = 0.995
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+     -Inf 37.47595
+sample estimates:
+mean of the differences 
+                     25
+

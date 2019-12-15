@@ -1,0 +1,13 @@
+user,time,error,distance
+1,83,40,close
+2,80,60,close
+3,90,50,close
+4,87,40,close
+5,80,50,close
+6,89,60,close
+1,90,20,far
+2,95,20,far
+3,105,30,far
+4,98,40,far
+5,92,10,far
+6,100,30,far
